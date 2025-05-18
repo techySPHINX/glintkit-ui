@@ -1,7 +1,6 @@
 import { Header } from "@/components/landing/Header";
 import { Footer } from "@/components/layout/footer";
 import type { Metadata } from "next";
-// import { usePathname } from "next/navigation";
 
 export const metadata: Metadata = {
     title: {

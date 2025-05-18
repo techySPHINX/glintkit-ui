@@ -1,14 +1,12 @@
 "use client";
 
 import Link from "next/link";
-// import { toast } from "sonner";
 import { useEffect } from "react";
-
+import Image from "next/image";
 import React from "react";
 import { toast as sonnerToast } from "sonner";
 import { ArrowRightBroken } from "./icons/arrow-right-broken";
 
-/** A fully custom toast that still maintains the animations and interactions. */
 function Toast(props: ToastProps) {
     const { title, description, id } = props;
 
@@ -26,9 +24,11 @@ function Toast(props: ToastProps) {
                     animation: "slideIn 0.3s ease-out forwards",
                 }}
             >
-                <img
+                <Image
                     src="/arca-directory.svg"
                     alt="Arca Directory"
+                    width={48}
+                    height={48}
                     className="w-12 h-12 mr-3 flex-shrink-0"
                 />
                 <div className="flex-1">

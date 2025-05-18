@@ -1,8 +1,8 @@
 import { ThemeToggle } from "@/lib/theme-toggle";
-import { Flame, Menu } from "lucide-react";
+import { Flame} from "lucide-react";
 import Link from "next/link";
 import { Link as ViewTransitionsLink } from "next-view-transitions";
-import Image from "next/image";
+
 import { ArrowUpRight } from "lucide-react";
 import { PartyPopper } from "lucide-react";
 

@@ -1,8 +1,8 @@
-import Input_10 from "@/components/glintkit/input/input-10";
-import Alert04 from "@/components/glintkit/alert/alert-04";
-import Input_08 from "@/components/glintkit/input/input-08";
-import Btn12 from "@/components/glintkit/button/btn-12";
-import Btn13 from "@/components/glintkit/button/btn-13";
+import Input_10 from "@/components/glintkitui/input/input-10";
+import Alert04 from "@/components/glintkitui/alert/alert-04";
+import Input_08 from "@/components/glintkitui/input/input-08";
+import Btn12 from "@/components/glintkitui/button/btn-12";
+import Btn13 from "@/components/glintkitui/button/btn-13";
 
 interface ComponentShowcaseCardProps {
     className: string;

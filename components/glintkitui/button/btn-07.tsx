@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Download, Check, X } from "lucide-react";
 
 interface Btn07Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -22,34 +22,14 @@ export default function Btn07({
     const [isProcessing, setIsProcessing] = useState(false);
     const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
     const [isScaling, setIsScaling] = useState(false);
-    const [progress, setProgress] = useState(0);
-
-    useEffect(() => {
-        if (isProcessing) {
-            const startTime = Date.now();
-            const interval = setInterval(() => {
-                const elapsed = Date.now() - startTime;
-                const newProgress = (elapsed / processDuration) * 100;
-
-                if (newProgress >= 100) {
-                    clearInterval(interval);
-                    setProgress(100);
-                } else {
-                    setProgress(newProgress);
-                }
-            }, 10);
-
-            return () => clearInterval(interval);
-        }
-    }, [isProcessing, processDuration]);
 
     async function handleClick() {
         if (isProcessing) return;
 
         setIsProcessing(true);
         setIsSuccess(null);
-        setProgress(0);
 
+        // simulate the processing duration
         await new Promise((resolve) => setTimeout(resolve, processDuration));
         const success = onProcess ? await onProcess() : true;
 
@@ -57,9 +37,9 @@ export default function Btn07({
         setIsProcessing(false);
         setIsScaling(true);
 
+        // reset success/flashing state after 2s
         setTimeout(() => {
             setIsSuccess(null);
-            setProgress(0);
             setIsScaling(false);
         }, 2000);
     }

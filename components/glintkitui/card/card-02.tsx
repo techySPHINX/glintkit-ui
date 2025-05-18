@@ -1,4 +1,4 @@
-import { Calendar, Sparkles, Code2, ExternalLink, Share2 } from "lucide-react";
+import { Calendar, Code2, ExternalLink, Share2 } from "lucide-react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -143,10 +143,14 @@ export default function Card02({
                             "text-white dark:text-zinc-900",
                             "shadow-xs"
                         )}
+                        asChild
                     >
-                        <ExternalLink className="w-4 h-4 mr-2" />
-                        View Portfolio
+                        <a href={`https://${portfolio}`} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink className="w-4 h-4 mr-2" />
+                            View Portfolio
+                        </a>
                     </Button>
+
                     <Button
                         variant="ghost"
                         className="flex items-center gap-1.5 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg p-1.5"

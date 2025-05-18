@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState} from "react";
 import { cn } from "@/lib/utils";
 import { Check, Copy } from "lucide-react";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";

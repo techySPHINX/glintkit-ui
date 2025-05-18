@@ -1,4 +1,4 @@
-import { Rocket, CheckCircle2, Clock } from "lucide-react";
+import {  CheckCircle2, Clock } from "lucide-react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
@@ -82,7 +82,7 @@ export default function Card03({
                             <div className="flex space-x-2">
                                 {teamMembers.map((member, index) => (
                                     <div
-                                        key={member.name}
+                                        key={`${member.name}-${index}`}
                                         className={cn(
                                             "relative rounded-full ",
                                             "hover:z-10"

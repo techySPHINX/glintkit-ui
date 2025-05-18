@@ -35,7 +35,7 @@ export default function AICardGeneration() {
         try {
             await new Promise((resolve) => setTimeout(resolve, 3000));
             setShowForm(false);
-        } catch (err) {
+        } catch{
             setError("Failed to generate video. Please try again.");
         } finally {
             setIsLoading(false);

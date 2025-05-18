@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/select";
 import {
     Palette,
-    Image,
+    Image as ImageIcon,
     Sun,
     User,
     Monitor
@@ -62,7 +62,7 @@ export const SettingsGeneration = ({
             {/* Background Select */}
             <div className="flex items-center justify-between gap-4">
                 <div className="flex items-center gap-2">
-                    <Image className="w-4 h-4 text-zinc-500" />
+                    <ImageIcon className="w-4 h-4 text-zinc-500" />
                     <span className="text-sm text-zinc-500">Background</span>
                 </div>
                 <Select

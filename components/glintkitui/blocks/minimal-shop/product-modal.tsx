@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
-import { X, Plus, Minus } from "lucide-react";
-import { useState } from "react";
+import { X } from "lucide-react";
 import { type Product } from "./data";
+import Image from "next/image";
 
 interface ProductModalProps {
     product: Product;
@@ -16,7 +16,6 @@ export function ProductModal({
     onClose,
     onAddToCart,
 }: ProductModalProps) {
-    const [quantity, setQuantity] = useState(1);
 
     return (
         <>
@@ -33,10 +32,13 @@ export function ProductModal({
             >
                 <div className="h-full md:flex">
                     <div className="relative md:w-2/5">
-                        <img
+                        <Image
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-[200px] md:h-full object-cover"
+                            fill
+                            className="object-cover"
+                            sizes="(min-width: 768px) 40vw, 100vw"
+                            priority
                         />
                         <button
                             onClick={onClose}

@@ -1,4 +1,3 @@
-// import EventToast from "@/components/event-toast";
 import { ComponentShowcaseCard } from "@/components/landing/component-showcase-card";
 import { HeroSection } from "@/components/landing/hero";
 import { InteractivePreview } from "@/components/landing/interactive-preview";
@@ -22,7 +21,6 @@ export default function Home() {
             />
           
             <TechnologyBadges/>
-            {/* <EventToast /> */}
         </main>
     );
 }

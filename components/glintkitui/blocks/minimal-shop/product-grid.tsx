@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 import { type Product } from "./data";
+import Image from "next/image";
+
 
 interface ProductGridProps {
     products: Product[];
@@ -19,10 +21,11 @@ export function ProductGrid({ products, onProductSelect }: ProductGridProps) {
                     transition={{ duration: 0.2 }}
                 >
                     <div className="aspect-[4/5] bg-white dark:bg-zinc-900 rounded-md overflow-hidden">
-                        <img
+                        <Image
                             src={product.image}
                             alt={product.name}
-                            className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+                            fill
+                            className="object-cover object-center group-hover:scale-105 transition-transform duration-300"
                         />
                     </div>
                     <div className="mt-1.5 space-y-0.5">

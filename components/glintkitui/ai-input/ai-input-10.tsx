@@ -60,9 +60,13 @@ export default function AIInput_10() {
         minHeight: 40,
         maxHeight: 200,
     });
-    const { fileName, fileInputRef, handleFileSelect, clearFile } =
-        useFileInput({ accept: "image/*", maxSize: 5 });
 
+    const {
+        fileName: uploadedFileName,
+        fileInputRef,
+        handleFileSelect,
+        clearFile,
+    } = useFileInput({ accept: "image/*", maxSize: 5 });
 
     const updateState = useCallback(
         (updates: Partial<typeof state>) =>
@@ -70,7 +74,7 @@ export default function AIInput_10() {
         []
     );
 
-    useClickOutside(menuRef as RefObject<HTMLElement>   , () => {
+    useClickOutside(menuRef as RefObject<HTMLElement>, () => {
         if (state.isMenuOpen) updateState({ isMenuOpen: false });
         if (state.isModelMenuOpen) updateState({ isModelMenuOpen: false });
     });
@@ -159,14 +163,13 @@ export default function AIInput_10() {
                         </div>
                     </div>
 
-                    {state.fileName && (
+                    {uploadedFileName && (
                         <div className="px-4 pt-2">
                             <FileDisplay
-                                fileName={state.fileName}
+                                fileName={uploadedFileName}
                                 onClear={() => {
+                                    clearFile();
                                     updateState({ fileName: "" });
-                                    if (fileInputRef.current)
-                                        fileInputRef.current.value = "";
                                 }}
                             />
                         </div>
@@ -195,10 +198,15 @@ export default function AIInput_10() {
                                         {
                                             icon: File,
                                             label: "Upload File",
-                                            onClick: () =>
-                                                fileInputRef.current?.click(),
+                                            onClick: () => {
+                                                fileInputRef.current?.click();
+                                            },
                                         },
-                                        { icon: Camera, label: "Take Photo" },
+                                        {
+                                            icon: Camera,
+                                            label: "Take Photo",
+                                            onClick: () => {},
+                                        },
                                     ].map(({ icon: Icon, label, onClick }) => (
                                         <button
                                             type="button"
@@ -241,6 +249,15 @@ export default function AIInput_10() {
                                 )}
                             />
                         </button>
+
+                        {/* Hidden file input */}
+                        <input
+                            type="file"
+                            accept="image/*"
+                            hidden
+                            ref={fileInputRef}
+                            onChange={handleFileSelect}
+                        />
                     </div>
                 </div>
             </div>
