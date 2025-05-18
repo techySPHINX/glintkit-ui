@@ -7,15 +7,9 @@ import TailwindCSS from "@/components/icons/tailwindcss";
 import { motion } from "motion/react";
 
 import {
-  PlaneTakeoff,
-  BarChart2,
-  Video,
-  AudioLines,
-  Globe,
-  Diamond,
+
   Sparkles,
-  Code,
-  Layers,
+
 } from "lucide-react";
 import { Btn14 } from "../glintkitui/button/btn-14";
 import Btn03 from "../glintkitui/button/btn-03";
@@ -29,14 +23,14 @@ import Features from "./feature-block";
 
 import Card02 from "../glintkitui/card/card-02";
 
-interface Action {
-  id: string;
-  label: string;
-  icon: React.ReactNode;
-  description?: string;
-  short?: string;
-  end?: string;
-}
+// interface Action {
+//   id: string;
+//   label: string;
+//   icon: React.ReactNode;
+//   description?: string;
+//   short?: string;
+//   end?: string;
+// }
 
 
 
@@ -104,7 +98,7 @@ export function HeroSection() {
 
       {/* Right side - Components Layout */}
       <div className="w-full lg:w-[55%] flex flex-col justify-between gap-6 lg:pl-8">
-        {/* Top row: Card + Action Search Bar */}
+        
         <motion.div
           initial={{ opacity: 0, y: -20, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -119,15 +113,11 @@ export function HeroSection() {
             <Card08 href="/docs/components/card" />
           </div>
 
-          {/* Action Search Bar */}
           <div className="w-full max-w-[600px] bg-transparent">
             <span className="text-sm text-zinc-500 dark:text-zinc-400 block text-center mb-2">
               Components
             </span>
-            {/* <ActionSearchBar
-                            actions={allActions}
-                            defaultOpen={true}
-                        /> */}
+          
             <Card02 />
           </div>
         </motion.div>

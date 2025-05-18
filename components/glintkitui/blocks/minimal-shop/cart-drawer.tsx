@@ -1,6 +1,8 @@
 import { motion } from "motion/react";
 import { X } from "lucide-react";
 import { type CartItem } from "./data";
+import Image from "next/image";
+
 
 interface CartDrawerProps {
     cart: CartItem[];
@@ -50,10 +52,12 @@ export function CartDrawer({
                                 key={item.id}
                                 className="flex gap-4 p-3 bg-zinc-50 dark:bg-zinc-800/50 rounded-lg"
                             >
-                                <img
+                                <Image
                                     src={item.image}
                                     alt={item.name}
-                                    className="w-24 h-24 object-cover rounded-md"
+                                    width={96}       // 24 * 4 (Tailwind w-24 = 6rem = 96px)
+                                    height={96}      // same as width for square
+                                    className="rounded-md object-cover"
                                 />
                                 <div className="flex-1 min-w-0">
                                     <div className="flex justify-between items-start">

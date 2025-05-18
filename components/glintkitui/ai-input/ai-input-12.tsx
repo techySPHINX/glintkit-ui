@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowRight } from "lucide-react";
+import Image from "next/image"; 
 import { useState } from "react";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -66,9 +67,11 @@ export default function AIInput_12() {
                                                         i > 0 ? "-8px" : "0",
                                                 }}
                                             >
-                                                <img
-                                                    src={avatar.src}
-                                                    alt={`Avatar ${i + 1}`}
+                                                <Image
+                                                    src={AVATARS[(i + 1) % AVATARS.length].src}
+                                                    alt={`Avatar ${((i + 1) % AVATARS.length) + 1}`}
+                                                    width={40} 
+                                                    height={40}
                                                     className="w-full h-full object-cover rounded-full border-[1.5px] border-white dark:border-none bg-white dark:bg-transparent ring-2 ring-black/5 dark:ring-0"
                                                 />
                                             </div>
@@ -116,9 +119,8 @@ export default function AIInput_12() {
                 </div>
 
                 <div className="text-xs text-black/50 dark:text-white/50 px-2 py-1">
-                    {`${AVATARS[0].nickname}, ${AVATARS[2].nickname}${
-                        value ? ` and ${AVATARS[3].nickname}` : ""
-                    } are writing...`}
+                    {`${AVATARS[0].nickname}, ${AVATARS[2].nickname}${value ? ` and ${AVATARS[3].nickname}` : ""
+                        } are writing...`}
                 </div>
             </div>
         </div>

@@ -122,7 +122,7 @@ function Faq02() {
     const faqs: Omit<FAQItemProps, "index">[] = [
         {
             question: "What makes your platform unique?",
-            answer: "Our platform stands out through its intuitive design, powerful automation capabilities, and seamless integration options. We've focused on creating a user experience that combines simplicity with advanced features.",
+            answer: "Our platform stands out through its intuitive design, powerful automation capabilities, and seamless integration options. We&apos;ve focused on creating a user experience that combines simplicity with advanced features.",
         },
         {
             question: "How does the pricing structure work?",
@@ -134,7 +134,7 @@ function Faq02() {
         },
         {
             question: "How can I get started?",
-            answer: "You can get started by signing up for a free trial. Once you've signed up, you'll have access to our platform's full range of features. You can also contact our support team for assistance.",
+            answer: "You can get started by signing up for a free trial. Once you&apos;ve signed up, you&apos;ll have access to our platform&apos;s full range of features. You can also contact our support team for assistance.",
         },
     ];
 
@@ -176,7 +176,7 @@ function Faq02() {
                         Still have questions?
                     </p>
                     <p className="text-xs text-gray-600 dark:text-gray-400 mb-4">
-                        We're here to help you
+                        We&apos;re here to help you
                     </p>
                     <button
                         type="button"

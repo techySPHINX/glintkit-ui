@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import {
-    Check,
+    
     Sparkles,
     ArrowRight,
     Shield,

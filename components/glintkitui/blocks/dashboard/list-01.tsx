@@ -5,7 +5,7 @@ import {
     Wallet,
     SendHorizontal,
     QrCode,
-    type LucideIcon,
+    
     Plus,
     ArrowRight,
     CreditCard,

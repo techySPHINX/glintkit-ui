@@ -1,4 +1,5 @@
 "use client";
+import { LucideIcon } from "lucide-react";
 
 import {
     BarChart2,
@@ -35,7 +36,7 @@ export default function Sidebar() {
         children,
     }: {
         href: string;
-        icon: any;
+        icon: LucideIcon;
         children: React.ReactNode;
     }) {
         return (

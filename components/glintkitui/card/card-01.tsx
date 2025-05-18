@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 import {
     Heart,
@@ -47,8 +48,8 @@ const defaultProps: Card01Props = {
     content: {
         text: "Just launched CodeSnippet UI! Check out the documentation and let me know what you think 🎨",
         link: {
-            title: "CodeSnippet UI Documentation",
-            description: "A comprehensive guide to CodeSnippet UI",
+            title: "Glintkit UI Documentation",
+            description: "A comprehensive guide to Glintkit UI",
             icon: <LinkIcon className="w-5 h-5 text-blue-500" />,
         },
     },
@@ -88,9 +89,11 @@ export default function Card_01({
                     <div className="flex items-center justify-between mb-5">
                         <div className="flex items-center gap-4">
                             <div className="relative">
-                                <img
-                                    src={author?.avatar}
-                                    alt={author?.name}
+                                <Image
+                                    src={author?.avatar || "/fallback-avatar.png"} // fallback if avatar is null
+                                    alt={author?.name || "Author Avatar"}
+                                    width={44}
+                                    height={44}
                                     className={cn(
                                         "w-11 h-11 rounded-full",
                                         "ring-2 ring-white dark:ring-zinc-800",
@@ -98,6 +101,7 @@ export default function Card_01({
                                         "transition-transform duration-300",
                                         "group-hover:scale-105"
                                     )}
+                                    style={{ objectFit: "cover" }}
                                 />
                                 <div className="absolute inset-0 rounded-full bg-linear-to-tr from-rose-500 to-blue-500 opacity-0 hover:opacity-10 transition-opacity duration-300" />
                             </div>

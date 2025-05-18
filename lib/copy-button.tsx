@@ -1,4 +1,4 @@
-import { Copy, Check } from "lucide-react";
+import { Copy } from "lucide-react";
 
 interface CopyButtonProps {
     onClick?: () => void;

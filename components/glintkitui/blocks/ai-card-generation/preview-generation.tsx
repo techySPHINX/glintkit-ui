@@ -10,12 +10,13 @@ interface PreviewProps {
     imageUrl: string;
 }
 
+const availableTexts = [
+    "Creating your masterpiece...",
+    "Finding the good colors...",
+    "Adding the final touches...",
+];
+
 export const Preview = ({ isLoading, imageUrl }: PreviewProps) => {
-    const availableTexts = [
-        "Creating your masterpiece...",
-        "Finding the good colors...",
-        "Adding the final touches...",
-    ];
     const [currentTextIndex, setCurrentTextIndex] = useState(0);
     const [progress, setProgress] = useState(0);
 
@@ -49,7 +50,7 @@ export const Preview = ({ isLoading, imageUrl }: PreviewProps) => {
     }, [isLoading]);
 
     return (
-        <div className="aspect-video  rounded-xl mb-4 flex items-center justify-center">
+        <div className="aspect-video rounded-xl mb-4 flex items-center justify-center">
             {isLoading ? (
                 <Card className="w-full max-w-md border-0 shadow-none bg-transparent">
                     <CardContent className="flex flex-col items-center gap-4 p-6">
@@ -62,7 +63,7 @@ export const Preview = ({ isLoading, imageUrl }: PreviewProps) => {
                                 {availableTexts[currentTextIndex]}
                             </p>
                             <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                                This usually takes 10-15 seconds
+                                This usually takes 10–15 seconds
                             </p>
                         </div>
                         <div className="w-full h-1.5 bg-zinc-200 dark:bg-zinc-700 rounded-full overflow-hidden">

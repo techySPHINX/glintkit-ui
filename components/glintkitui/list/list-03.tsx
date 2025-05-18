@@ -21,7 +21,7 @@ export default function List03() {
             <div className="p-4 flex items-center justify-between border-b border-zinc-200 dark:border-zinc-800">
                 <div>
                     <h2 className="font-semibold text-zinc-900 dark:text-zinc-100">
-                        Today's Tasks
+                        Today&apos;s Tasks
                     </h2>
                     <p className="text-sm text-zinc-500 dark:text-zinc-400">
                         June 12, 2024

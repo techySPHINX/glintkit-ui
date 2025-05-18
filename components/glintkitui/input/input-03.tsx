@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import Image from 'next/image';
 import { Upload, X, FileText } from "lucide-react";
 import { useFileInput } from "@/hooks/use-file-input";
 
@@ -115,11 +116,12 @@ export default function Input_03() {
                     ) : (
                         <div className="flex items-center gap-4">
                             {preview ? (
-                                <div className="relative w-16 h-16 rounded-lg overflow-hidden">
-                                    <img
+                                <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                                    <Image
                                         src={preview}
                                         alt="Preview"
-                                        className="w-full h-full object-cover"
+                                        layout="fill"
+                                        objectFit="cover"
                                     />
                                 </div>
                             ) : (
@@ -134,8 +136,8 @@ export default function Input_03() {
                                 <p className="text-xs text-zinc-500">
                                     {fileSize
                                         ? `${(fileSize / 1024 / 1024).toFixed(
-                                              2
-                                          )} MB`
+                                            2
+                                        )} MB`
                                         : "0 MB"}
                                 </p>
                                 {uploadProgress < 100 && (

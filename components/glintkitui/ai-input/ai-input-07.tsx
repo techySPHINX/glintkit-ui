@@ -9,7 +9,7 @@ import { useAutoResizeTextarea } from "@/hooks/use-auto-resize-textarea";
 export default function AIInput_07() {
     const [inputValue, setInputValue] = useState("");
     const [submitted, setSubmitted] = useState(true);
-    const [isAnimating, setIsAnimating] = useState(true);
+    const [isAnimating] = useState(true);
     const { textareaRef, adjustHeight } = useAutoResizeTextarea({
         minHeight: 56,
         maxHeight: 200,

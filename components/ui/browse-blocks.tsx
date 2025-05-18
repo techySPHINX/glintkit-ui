@@ -4,12 +4,8 @@ import { Link } from "next-view-transitions";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { ArrowDownRight, ArrowRight, BlocksIcon } from "lucide-react";
+import {  ArrowRight} from "lucide-react";
 
-/**
- *
- *
- */
 export function BrowseBlocksButton() {
     return (
         <Link
