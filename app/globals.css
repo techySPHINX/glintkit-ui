@@ -1,13 +1,27 @@
 @import "tailwindcss";
 
+<<<<<<< Updated upstream
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
+=======
+@custom-variant dark (&:is(.dark *));
+>>>>>>> Stashed changes
 
-@theme inline {
+/* Base imports */
+@import "fumadocs-ui/css/black.css";
+@import "fumadocs-ui/css/preset.css";
+
+@source '../node_modules/fumadocs-ui/dist/**/*.js';
+
+/* Theme variables */
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -23,4 +37,285 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+=======
+=======
+>>>>>>> Stashed changes
+
+  /* Sidebar colors */
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-float-slow: float 8s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+<<<<<<< Updated upstream
+}
+
+=======
+
+  /* Sidebar colors */
+  --color-sidebar: hsl(var(--sidebar-background));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+
+  /* Border radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-float-slow: float 8s ease-in-out infinite;
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+>>>>>>> Stashed changes
+=======
+}
+
+>>>>>>> Stashed changes
+/* Font & base styles */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Light mode violet-ish palette */
+    --sidebar-background: 262 40% 98%;
+    --sidebar-foreground: 262 15% 20%;
+    --sidebar-primary: 262 65% 40%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 262 70% 90%;
+    --sidebar-accent-foreground: 262 65% 20%;
+    --sidebar-border: 262 40% 85%;
+    --sidebar-ring: 262 80% 60%;
+
+    --background: 255 255% 100%;
+    --foreground: 262 10% 15%;
+  }
+
+  .dark {
+    /* Dark mode violet palette */
+    --sidebar-background: 262 40% 10%;
+    --sidebar-foreground: 262 50% 90%;
+    --sidebar-primary: 262 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 262 60% 25%;
+    --sidebar-accent-foreground: 262 55% 95%;
+    --sidebar-border: 262 60% 25%;
+    --sidebar-ring: 262 80% 75%;
+
+    --background: 262 40% 10%;
+    --foreground: 262 30% 90%;
+  }
+
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a {
+    color: hsl(var(--sidebar-primary));
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  a:hover,
+  a:focus {
+    color: hsl(var(--sidebar-primary-foreground));
+    text-decoration: underline;
+  }
+
+  pre {
+    font-family: "Fira Code", monospace;
+    background: hsl(var(--sidebar-accent));
+    color: hsl(var(--sidebar-accent-foreground));
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    overflow-x: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+
+  pre::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: 1px solid hsl(var(--sidebar-border));
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-sm);
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    transition: border-color 0.3s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    border-color: hsl(var(--sidebar-primary));
+    outline: none;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    display: block;
+    white-space: nowrap;
+  }
+
+  th, td {
+    border: 1px solid hsl(var(--sidebar-border));
+    padding: 0.75rem 1rem;
+  }
+
+  th {
+    background-color: hsl(var(--sidebar-accent));
+    color: hsl(var(--sidebar-accent-foreground));
+    font-weight: 600;
+  }
+
+  .title {
+    text-wrap: balance;
+    font-weight: 700;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    color: hsl(var(--sidebar-primary));
+  }
+
+  .geist-mono {
+    font-family: var(--font-geist-mono, "Fira Code", monospace);
+  }
+
+  .geist-sans {
+    font-family: var(--font-geist-sans, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif);
+  }
+}
+
+/* Utility and element-specific */
+@layer utilities {
+  button {
+    outline: none;
+    cursor: pointer;
+    background-color: hsl(var(--sidebar-primary));
+    color: hsl(var(--sidebar-primary-foreground));
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1.25rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+  }
+
+  button:hover,
+  button:focus {
+    background-color: hsl(var(--sidebar-primary-foreground));
+    color: hsl(var(--sidebar-primary));
+    outline: none;
+  }
+
+  /* Scrollbar hidden for <pre> and other code blocks */
+  pre::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Smooth image styling */
+  img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(100, 80, 180, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform;
+  }
+
+  img:hover,
+  img:focus {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(120, 100, 220, 0.6);
+  }
+}
+
+/* New badge styles for links */
+a[href*="/docs/components/"],
+a[href*="/docs/blocks/"] {
+  position: relative;
+  padding-right: 2.5rem;
+}
+
+a[href*="/docs/components/"]::after,
+a[href*="/docs/blocks/"]:not(#browse-blocks-button)::after {
+  content: "New";
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(139, 92, 246, 0.2); /* violet shade */
+  color: #8b5cf6;
+  padding: 0.1rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.4);
+  pointer-events: none;
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 }
