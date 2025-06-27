@@ -1,18 +1,21 @@
 import { source } from "@/lib/source";
 import {
-  DocsBody,
-  DocsDescription,
   DocsPage,
+  DocsBody,
   DocsTitle,
+  DocsDescription,
 } from "fumadocs-ui/page";
 import { notFound } from "next/navigation";
-import { getMDXComponents } from "./mdx-components";
+import defaultMdxComponents from "fumadocs-ui/mdx";
+import { Preview } from "@/components/mdx/preview";
+import { PreviewClient } from "@/components/mdx/preview-client";
 
 export default async function Page(props: {
   params: Promise<{ slug?: string[] }>;
 }) {
   const params = await props.params;
   const page = source.getPage(params.slug);
+  console.log("page", page);
   if (!page) notFound();
 
   const MDX = page.data.body;
@@ -22,8 +25,13 @@ export default async function Page(props: {
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription>{page.data.description}</DocsDescription>
       <DocsBody>
-        <p>{page.data.content}</p>
-        <MDX components={getMDXComponents()} />
+        <MDX
+          components={{
+            ...defaultMdxComponents,
+            Preview,
+            PreviewClient,
+          }}
+        />
       </DocsBody>
     </DocsPage>
   );
