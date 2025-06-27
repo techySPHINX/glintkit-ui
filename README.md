@@ -24,7 +24,7 @@ A customizable, accessible, and performant UI component library built with **Rea
 ```bash
 # Clone the repository
 git clone https://github.com/techySPHINX/glintkit-ui.git
-cd react-ui
+cd glintkit-ui
 
 # Install dependencies
 npm install
