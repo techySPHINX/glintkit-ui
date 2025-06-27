@@ -10,7 +10,7 @@ export function BrowseBlocksButton() {
     return (
         <Link
             id="browse-blocks-button"
-            href="https://kokonutui.pro/templates"
+            href=""
             className="flex items-center gap-8"
         >
             <motion.div
