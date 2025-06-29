@@ -2,8 +2,6 @@ import { HeaderPro } from "@/components/landing/header-pro";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 import { Flame } from "lucide-react";
 
-
-
 export const baseOptions: BaseLayoutProps = {
   nav: {
     title: (
