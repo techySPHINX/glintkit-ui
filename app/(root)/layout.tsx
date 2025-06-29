@@ -17,7 +17,14 @@ export default function RootLayout({
     return (
       <>
         <Header />
-        <main className="relative w-full pt-0 md:pt-0 bg-white dark:bg-black">
+        <main
+          className="relative w-full pt-0 md:pt-0"
+          style={{
+            background: "var(--background)",
+            color: "var(--foreground)",
+            transition: "background 0.3s, color 0.3s",
+          }}
+        >
           {children}
         </main>
         <Footer />

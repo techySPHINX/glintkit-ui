@@ -4,7 +4,7 @@ import { Link } from "next-view-transitions";
 import { Button } from "./button";
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import { ArrowDownRight} from "lucide-react";
+import { ArrowDownRight } from "lucide-react";
 
 export function BrowseComponentsButton() {
   return (
@@ -14,25 +14,29 @@ export function BrowseComponentsButton() {
     >
       <motion.div
         initial={{ x: 200, opacity: 0 }}
-        animate={{ x: 0, opacity: 1, transition: { duration: 0.2 } }}
-        whileHover={{ x: 5, transition: { duration: 0.2 } }}
+        animate={{ x: 0, opacity: 1, transition: { duration: 0.25 } }}
+        whileHover={{ x: 8, transition: { duration: 0.2 } }}
       >
         <Button
           className={cn(
-            "relative inline-flex items-center justify-center gap-4 rounded-xl font-medium",
-            "relative h-12 px-6 min-w-72 md:min-w-56",
-            "bg-black dark:bg-white ",
-            "text-white dark:text-black",
-            "border-2 border-orange-500/20 dark:border-orange-400/20",
-            "shadow-[0_8px_16px_-6px_rgba(251,113,133,0.3)]",
-            "dark:shadow-[0_8px_16px_-6px_rgba(251,113,133,0.2)]",
-            "shadow-[0_15px_30px_-6px_rgba(251,113,133,0.4),0_0px_30px_-6px_rgba(168,85,247,0.4)]",
-            "dark:shadow-[0_15px_30px_-6px_rgba(251,113,133,0.3),0_0px_30px_-6px_rgba(168,85,247,0.3)]",
-            "backdrop-blur-xs"
+            "relative inline-flex items-center justify-center gap-4 rounded-xl font-semibold",
+            "h-12 px-6 min-w-[14rem] md:min-w-[14rem]",
+            // Light bluish gradient background
+            "bg-gradient-to-r from-blue-100 via-cyan-100 to-blue-200",
+            "text-indigo-900",
+            "border border-blue-200",
+            "shadow-[0_4px_24px_0_rgba(165,180,252,0.18)]",
+            "backdrop-blur-sm",
+            "transition-shadow duration-300 ease-in-out",
+            "hover:shadow-[0_8px_32px_0_rgba(99,102,241,0.18)]",
+            "focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-200 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+            // Optional: subtle texture overlay using a pseudo-element (add this in your CSS if you want)
+            "before:absolute before:inset-0 before:rounded-xl before:pointer-events-none before:opacity-30 before:bg-[url('/noise-light.png')]"
           )}
         >
-          <span className="font-medium">Browse Components</span>
-          {/* <CompassOutline className="w-8 h-8" /> */}
+          <span className="font-semibold tracking-wide select-none">
+            Browse Components
+          </span>
           <ArrowDownRight className="w-5 h-5 rotate-[270deg]" />
         </Button>
       </motion.div>
