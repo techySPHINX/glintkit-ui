@@ -2,7 +2,6 @@
 
 import { cn } from "@/lib/utils";
 import { motion } from "motion/react";
-import Image from "next/image";
 import Nextjs from "@/components/icons/nextjs";
 import ReactIcon from "@/components/icons/react";
 import ShadcnIcon from "@/components/icons/shadcn";

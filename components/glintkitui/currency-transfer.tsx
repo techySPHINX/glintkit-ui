@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, RefreshCw, Copy, Check } from "lucide-react"
+import { Variants } from "framer-motion"
 
 interface CheckmarkProps {
   size?: number
@@ -12,7 +13,7 @@ interface CheckmarkProps {
   className?: string
 }
 
-const draw = {
+const draw: Variants = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: (i: number) => ({
     pathLength: 1,
@@ -20,7 +21,7 @@ const draw = {
     transition: {
       pathLength: {
         delay: i * 0.2,
-        type: "spring",
+        type: "spring" as const,
         duration: 1.5,
         bounce: 0.2,
         ease: "easeInOut",

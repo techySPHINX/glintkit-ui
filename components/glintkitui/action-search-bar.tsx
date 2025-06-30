@@ -1,9 +1,8 @@
-"use client"
+"use client";
 
-import type React from "react"
-
-import { useState, useEffect, useRef, type KeyboardEvent } from "react"
-import { AnimatePresence, motion } from "framer-motion"
+import type React from "react";
+import { useState, useEffect, useRef, type KeyboardEvent } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   Search,
   Send,
@@ -23,34 +22,34 @@ import {
   Sparkles,
   Palette,
   Bookmark,
-} from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Badge } from "@/components/ui/badge"
-import { cn } from "@/lib/utils"
+} from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
 interface Action {
-  id: string
-  label: string
-  icon: React.ReactNode
-  description?: string
-  shortcut?: string
-  category?: string
-  tags?: string[]
-  color?: string
-  isNew?: boolean
-  isPinned?: boolean
-  execute?: () => void
+  id: string;
+  label: string;
+  icon: React.ReactNode;
+  description?: string;
+  shortcut?: string;
+  category?: string;
+  tags?: string[];
+  color?: string;
+  isNew?: boolean;
+  isPinned?: boolean;
+  execute?: () => void;
 }
 
 interface ActionCategory {
-  name: string
-  actions: Action[]
+  name: string;
+  actions: Action[];
 }
 
 interface SearchResult {
-  categories: ActionCategory[]
-  recentActions: Action[]
-  suggestedActions: Action[]
+  categories: ActionCategory[];
+  recentActions: Action[];
+  suggestedActions: Action[];
 }
 
 // Sample action data with more variety and categories
@@ -210,40 +209,42 @@ const allActions: Action[] = [
     tags: ["saved", "bookmarks", "favorites"],
     color: "#0d9488",
   },
-]
+];
 
 // Group actions by category
 const groupActionsByCategory = (actions: Action[]): ActionCategory[] => {
-  const categories: Record<string, Action[]> = {}
+  const categories: Record<string, Action[]> = {};
 
   actions.forEach((action) => {
-    const category = action.category || "Uncategorized"
+    const category = action.category || "Uncategorized";
     if (!categories[category]) {
-      categories[category] = []
+      categories[category] = [];
     }
-    categories[category].push(action)
-  })
+    categories[category].push(action);
+  });
 
   return Object.entries(categories).map(([name, actions]) => ({
     name,
     actions,
-  }))
-}
+  }));
+};
 
 export default function ActionSearchBar({
   defaultOpen = false,
   className,
 }: {
-  defaultOpen?: boolean
-  className?: string
+  defaultOpen?: boolean;
+  className?: string;
 }) {
-  const [query, setQuery] = useState("")
-  const [isFocused, setIsFocused] = useState(defaultOpen)
-  const [selectedIndex, setSelectedIndex] = useState(0)
-  const [activeCategory, setActiveCategory] = useState<string | null>(null)
-  const [recentActions] = useState<Action[]>(allActions.filter((a) => a.isPinned).slice(0, 3))
-  const inputRef = useRef<HTMLInputElement>(null)
-  const resultsRef = useRef<HTMLDivElement>(null)
+  const [query, setQuery] = useState("");
+  const [isFocused, setIsFocused] = useState(defaultOpen);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [recentActions] = useState<Action[]>(
+    allActions.filter((a) => a.isPinned).slice(0, 3)
+  );
+  const inputRef = useRef<HTMLInputElement>(null);
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   // Process and filter actions based on query
   const getSearchResults = (): SearchResult => {
@@ -253,23 +254,24 @@ export default function ActionSearchBar({
         categories: groupActionsByCategory(allActions),
         recentActions: recentActions,
         suggestedActions: allActions.filter((a) => a.isNew).slice(0, 3),
-      }
+      };
     }
-
-    const normalizedQuery = query.toLowerCase().trim()
+    const normalizedQuery = query.toLowerCase().trim();
     const filteredActions = allActions.filter((action) => {
       const searchableText = [
         action.label.toLowerCase(),
         action.description?.toLowerCase() || "",
         ...(action.tags || []).map((tag) => tag.toLowerCase()),
-      ].join(" ")
+      ].join(" ");
 
-      return searchableText.includes(normalizedQuery)
-    })
+      return searchableText.includes(normalizedQuery);
+    });
 
     // If filtering by category, only show that category
     if (activeCategory) {
-      const categoryActions = filteredActions.filter((a) => a.category === activeCategory)
+      const categoryActions = filteredActions.filter(
+        (a) => a.category === activeCategory
+      );
       return {
         categories: [
           {
@@ -279,106 +281,109 @@ export default function ActionSearchBar({
         ],
         recentActions: [],
         suggestedActions: [],
-      }
+      };
     }
 
     return {
       categories: groupActionsByCategory(filteredActions),
       recentActions: [],
       suggestedActions: [],
-    }
-  }
+    };
+  };
 
-  const searchResults = getSearchResults()
+  const searchResults = getSearchResults();
 
   // Calculate total number of visible actions for keyboard navigation
   const getAllVisibleActions = (): Action[] => {
-    const allVisible: Action[] = []
+    const allVisible: Action[] = [];
 
     if (searchResults.recentActions.length > 0) {
-      allVisible.push(...searchResults.recentActions)
+      allVisible.push(...searchResults.recentActions);
     }
 
     if (searchResults.suggestedActions.length > 0) {
-      allVisible.push(...searchResults.suggestedActions)
+      allVisible.push(...searchResults.suggestedActions);
     }
 
     searchResults.categories.forEach((category) => {
-      allVisible.push(...category.actions)
-    })
+      allVisible.push(...category.actions);
+    });
 
-    return allVisible
-  }
+    return allVisible;
+  };
 
-  const visibleActions = getAllVisibleActions()
+  const visibleActions = getAllVisibleActions();
 
-  // Reset selected index when results change
   useEffect(() => {
-    setSelectedIndex(0)
-  }, [query, activeCategory])
+    setSelectedIndex(0);
+  }, [query, activeCategory]);
 
-  // Handle keyboard navigation
   const handleKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     switch (e.key) {
       case "ArrowDown":
-        e.preventDefault()
-        setSelectedIndex((prev) => (prev + 1) % visibleActions.length)
-        break
+        e.preventDefault();
+        setSelectedIndex((prev) => (prev + 1) % visibleActions.length);
+        break;
       case "ArrowUp":
-        e.preventDefault()
-        setSelectedIndex((prev) => (prev - 1 + visibleActions.length) % visibleActions.length)
-        break
+        e.preventDefault();
+        setSelectedIndex(
+          (prev) => (prev - 1 + visibleActions.length) % visibleActions.length
+        );
+        break;
       case "Enter":
-        e.preventDefault()
+        e.preventDefault();
         if (visibleActions[selectedIndex]) {
-          executeAction(visibleActions[selectedIndex])
+          executeAction(visibleActions[selectedIndex]);
         }
-        break
+        break;
       case "Escape":
-        e.preventDefault()
-        setIsFocused(false)
-        inputRef.current?.blur()
-        break
+        e.preventDefault();
+        setIsFocused(false);
+        inputRef.current?.blur();
+        break;
     }
-  }
+  };
 
-  // Scroll selected item into view
   useEffect(() => {
     if (resultsRef.current) {
-      const selectedElement = resultsRef.current.querySelector(`[data-index="${selectedIndex}"]`)
+      const selectedElement = resultsRef.current.querySelector(
+        `[data-index="${selectedIndex}"]`
+      );
       if (selectedElement) {
-        selectedElement.scrollIntoView({ block: "nearest", behavior: "smooth" })
+        selectedElement.scrollIntoView({
+          block: "nearest",
+          behavior: "smooth",
+        });
       }
     }
-  }, [selectedIndex])
+  }, [selectedIndex]);
 
-  // Global keyboard shortcut to focus search
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
+    const handleKeyDown = (e: globalThis.KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
-        e.preventDefault()
-        inputRef.current?.focus()
-        setIsFocused(true)
+        e.preventDefault();
+        inputRef.current?.focus();
+        setIsFocused(true);
       }
-    }
+    };
 
-    window.addEventListener("keydown", handleKeyDown as any)
-    return () => window.removeEventListener("keydown", handleKeyDown as any)
-  }, [])
+    window.addEventListener("keydown", handleKeyDown as EventListener);
+    return () => window.removeEventListener("keydown", handleKeyDown as EventListener);
+  }, []);
 
   const executeAction = (action: Action) => {
-    console.log(`Executing action: ${action.label}`)
+    console.log(`Executing action: ${action.label}`);
     if (action.execute) {
-      action.execute()
+      action.execute();
     }
-    setIsFocused(false)
-    setQuery("")
-    inputRef.current?.blur()
-  }
+    setIsFocused(false);
+    setQuery("");
+    inputRef.current?.blur();
+  };
 
   const handleCategoryClick = (category: string) => {
-    setActiveCategory((prev) => (prev === category ? null : category))
-  }
+    setActiveCategory((prev) => (prev === category ? null : category));
+  };
 
   // Animation variants
   const containerVariants = {
@@ -400,7 +405,7 @@ export default function ActionSearchBar({
         duration: 0.15,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 10 },
@@ -418,14 +423,17 @@ export default function ActionSearchBar({
         duration: 0.1,
       },
     },
-  }
+  };
 
   return (
     <div className={cn("w-full max-w-2xl mx-auto", className)}>
       <div className="relative flex flex-col justify-start items-center">
         <div className="w-full sticky top-0 bg-background z-10 pt-4 pb-1">
           <div className="flex items-center justify-between mb-2">
-            <label className="text-xs font-medium text-muted-foreground" htmlFor="action-search">
+            <label
+              className="text-xs font-medium text-muted-foreground"
+              htmlFor="action-search"
+            >
               Search Commands
             </label>
             <div className="flex items-center gap-1">
@@ -493,11 +501,18 @@ export default function ActionSearchBar({
               >
                 {/* Category filters */}
                 {searchResults.categories.length > 1 && (
-                  <motion.div className="p-2 border-b flex gap-1 flex-wrap" variants={itemVariants}>
+                  <motion.div
+                    className="p-2 border-b flex gap-1 flex-wrap"
+                    variants={itemVariants}
+                  >
                     {searchResults.categories.map((category) => (
                       <Badge
                         key={category.name}
-                        variant={activeCategory === category.name ? "default" : "outline"}
+                        variant={
+                          activeCategory === category.name
+                            ? "default"
+                            : "outline"
+                        }
                         className="cursor-pointer hover:bg-accent transition-colors"
                         onClick={() => handleCategoryClick(category.name)}
                       >
@@ -511,7 +526,9 @@ export default function ActionSearchBar({
                 {searchResults.recentActions.length > 0 && (
                   <motion.div variants={itemVariants}>
                     <div className="px-3 pt-2 pb-1">
-                      <h3 className="text-xs font-medium text-muted-foreground">Recent</h3>
+                      <h3 className="text-xs font-medium text-muted-foreground">
+                        Recent
+                      </h3>
                     </div>
                     <ul>
                       {searchResults.recentActions.map((action, idx) => (
@@ -520,7 +537,9 @@ export default function ActionSearchBar({
                           data-index={idx}
                           className={cn(
                             "px-3 py-2 mx-1 my-0.5 flex items-center justify-between hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-md transition-colors",
-                            selectedIndex === idx ? "bg-accent text-accent-foreground" : "",
+                            selectedIndex === idx
+                              ? "bg-accent text-accent-foreground"
+                              : ""
                           )}
                           variants={itemVariants}
                           onClick={() => executeAction(action)}
@@ -533,8 +552,12 @@ export default function ActionSearchBar({
                               {action.icon}
                             </div>
                             <div>
-                              <div className="text-sm font-medium">{action.label}</div>
-                              <div className="text-xs text-muted-foreground">{action.description}</div>
+                              <div className="text-sm font-medium">
+                                {action.label}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {action.description}
+                              </div>
                             </div>
                           </div>
                           <div className="flex items-center gap-2">
@@ -554,18 +577,23 @@ export default function ActionSearchBar({
                 {searchResults.suggestedActions.length > 0 && (
                   <motion.div variants={itemVariants}>
                     <div className="px-3 pt-2 pb-1">
-                      <h3 className="text-xs font-medium text-muted-foreground">Suggested</h3>
+                      <h3 className="text-xs font-medium text-muted-foreground">
+                        Suggested
+                      </h3>
                     </div>
                     <ul>
                       {searchResults.suggestedActions.map((action, idx) => {
-                        const actionIndex = searchResults.recentActions.length + idx
+                        const actionIndex =
+                          searchResults.recentActions.length + idx;
                         return (
                           <motion.li
                             key={action.id}
                             data-index={actionIndex}
                             className={cn(
                               "px-3 py-2 mx-1 my-0.5 flex items-center justify-between hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-md transition-colors",
-                              selectedIndex === actionIndex ? "bg-accent text-accent-foreground" : "",
+                              selectedIndex === actionIndex
+                                ? "bg-accent text-accent-foreground"
+                                : ""
                             )}
                             variants={itemVariants}
                             onClick={() => executeAction(action)}
@@ -579,7 +607,9 @@ export default function ActionSearchBar({
                               </div>
                               <div>
                                 <div className="flex items-center gap-2">
-                                  <span className="text-sm font-medium">{action.label}</span>
+                                  <span className="text-sm font-medium">
+                                    {action.label}
+                                  </span>
                                   {action.isNew && (
                                     <Badge
                                       variant="default"
@@ -589,7 +619,9 @@ export default function ActionSearchBar({
                                     </Badge>
                                   )}
                                 </div>
-                                <div className="text-xs text-muted-foreground">{action.description}</div>
+                                <div className="text-xs text-muted-foreground">
+                                  {action.description}
+                                </div>
                               </div>
                             </div>
                             <div className="flex items-center gap-2">
@@ -600,7 +632,7 @@ export default function ActionSearchBar({
                               )}
                             </div>
                           </motion.li>
-                        )
+                        );
                       })}
                     </ul>
                   </motion.div>
@@ -608,21 +640,26 @@ export default function ActionSearchBar({
 
                 {/* Categorized actions */}
                 {searchResults.categories.map((category, categoryIndex) => {
-                  const startingIndex = searchResults.recentActions.length + searchResults.suggestedActions.length
+                  const startingIndex =
+                    searchResults.recentActions.length +
+                    searchResults.suggestedActions.length;
 
                   return (
                     <motion.div key={category.name} variants={itemVariants}>
                       <div className="px-3 pt-2 pb-1">
-                        <h3 className="text-xs font-medium text-muted-foreground">{category.name}</h3>
+                        <h3 className="text-xs font-medium text-muted-foreground">
+                          {category.name}
+                        </h3>
                       </div>
                       <ul>
                         {category.actions.map((action, idx) => {
                           // Calculate the absolute index for this action
-                          let actionIndex = startingIndex
+                          let actionIndex = startingIndex;
                           for (let i = 0; i < categoryIndex; i++) {
-                            actionIndex += searchResults.categories[i].actions.length
+                            actionIndex +=
+                              searchResults.categories[i].actions.length;
                           }
-                          actionIndex += idx
+                          actionIndex += idx;
 
                           return (
                             <motion.li
@@ -630,7 +667,9 @@ export default function ActionSearchBar({
                               data-index={actionIndex}
                               className={cn(
                                 "px-3 py-2 mx-1 my-0.5 flex items-center justify-between hover:bg-accent hover:text-accent-foreground cursor-pointer rounded-md transition-colors",
-                                selectedIndex === actionIndex ? "bg-accent text-accent-foreground" : "",
+                                selectedIndex === actionIndex
+                                  ? "bg-accent text-accent-foreground"
+                                  : ""
                               )}
                               variants={itemVariants}
                               onClick={() => executeAction(action)}
@@ -638,13 +677,17 @@ export default function ActionSearchBar({
                               <div className="flex items-center gap-3">
                                 <div
                                   className="flex items-center justify-center w-6 h-6 rounded-md"
-                                  style={{ backgroundColor: `${action.color}20` }}
+                                  style={{
+                                    backgroundColor: `${action.color}20`,
+                                  }}
                                 >
                                   {action.icon}
                                 </div>
                                 <div>
                                   <div className="flex items-center gap-2">
-                                    <span className="text-sm font-medium">{action.label}</span>
+                                    <span className="text-sm font-medium">
+                                      {action.label}
+                                    </span>
                                     {action.isNew && (
                                       <Badge
                                         variant="default"
@@ -654,7 +697,9 @@ export default function ActionSearchBar({
                                       </Badge>
                                     )}
                                   </div>
-                                  <div className="text-xs text-muted-foreground">{action.description}</div>
+                                  <div className="text-xs text-muted-foreground">
+                                    {action.description}
+                                  </div>
                                 </div>
                               </div>
                               <div className="flex items-center gap-2">
@@ -665,11 +710,11 @@ export default function ActionSearchBar({
                                 )}
                               </div>
                             </motion.li>
-                          )
+                          );
                         })}
                       </ul>
                     </motion.div>
-                  )
+                  );
                 })}
 
                 {/* Footer with keyboard shortcuts */}
@@ -707,5 +752,5 @@ export default function ActionSearchBar({
         </div>
       </div>
     </div>
-  )
+  );
 }
