@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/techySPHINX/glintkit-ui">
-    <img src="https://raw.githubusercontent.com/techySPHINX/glintkit-ui/main/public/glintkit-ui-logo.svg" alt="GlintKit UI Logo" width="150">
+  <a href="https://github.com/techySphinx/glintkit-ui">
+    <img src="https://raw.githubusercontent.com/techySphinx/glintkit-ui/main/public/glintkit-ui.png" alt="GlintKit UI Logo" width="150">
   </a>
 </p>
 
@@ -13,20 +13,20 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/techySPHINX/glintkit-ui/blob/main/JAGAN_LICENSE.md">
+  <a href="https://github.com/techySphinx/glintkit-ui/blob/main/JAGAN_LICENSE.md">
     <img src="https://img.shields.io/badge/License-JAGAN_LICENSE-blue.svg" alt="License">
   </a>
-  <a href="https://github.com/techySPHINX/glintkit-ui/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/techySPHINX/glintkit-ui.svg" alt="Contributors">
+  <a href="https://github.com/techySphinx/glintkit-ui/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/techySphinx/glintkit-ui.svg" alt="Contributors">
   </a>
-  <a href="https://github.com/techySPHINX/glintkit-ui/stargazers">
-    <img src="https://img.shields.io/github/stars/techySPHINX/glintkit-ui.svg?style=social" alt="Stars">
+  <a href="https://github.com/techySphinx/glintkit-ui/stargazers">
+    <img src="https://img.shields.io/github/stars/techySphinx/glintkit-ui.svg?style=social" alt="Stars">
   </a>
-  <a href="https://github.com/techySPHINX/glintkit-ui/issues">
-    <img src="https://img.shields.io/github/issues/techySPHINX/glintkit-ui.svg" alt="Issues">
+  <a href="https://github.com/techySphinx/glintkit-ui/issues">
+    <img src="https://img.shields.io/github/issues/techySphinx/glintkit-ui.svg" alt="Issues">
   </a>
-  <a href="https://github.com/techySPHINX/glintkit-ui/pulls">
-    <img src="https://img.shields.io/github/issues-pr/techySPHINX/glintkit-ui.svg" alt="Pull Requests">
+  <a href="https://github.com/techySphinx/glintkit-ui/pulls">
+    <img src="https://img.shields.io/github/issues-pr/techySphinx/glintkit-ui.svg" alt="Pull Requests">
   </a>
 </p>
 
@@ -62,7 +62,7 @@ Clone the repository and install dependencies:
 
 ```bash
 # Clone the repository
-git clone https://github.com/techySPHINX/glintkit-ui.git
+git clone https://github.com/techySphinx/glintkit-ui.git
 cd glintkit-ui
 
 # Install dependencies using your preferred package manager
@@ -215,5 +215,5 @@ Join our growing community and get support:
 ---
 
 <p align="center">
-  Built with ❤️ by <a href="https://github.com/techySPHINX">Jagan Kumar Hotta</a>
+  Built with ❤️ by <a href="https://github.com/techySphinx">Jagan Kumar Hotta</a>
 </p>
