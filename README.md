@@ -1,10 +1,8 @@
 <p align="center">
   <a href="https://github.com/techySphinx/glintkit-ui">
-    <img src="https://raw.githubusercontent.com/techySphinx/glintkit-ui/main/public/glintkit-ui.png" alt="GlintKit UI Logo" width="150">
+    <img src="https://raw.githubusercontent.com/techySphinx/glintkit-ui/main/public/glintkit-ui.png" alt="GlintKit UI Logo" width="500" height="300">
   </a>
 </p>
-
-<h1 align="center">GlintKit UI</h1>
 
 <p align="center">
   A modern, open-source UI component library built with React, Next.js, Tailwind CSS, and Radix UI.
