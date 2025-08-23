@@ -3,7 +3,7 @@ import {
   defineCollections,
   frontmatterSchema,
   metaSchema
-} from "fumadocs-mdx/config";
+} from "fumadocs-mdx/config/zod-3";
 var docs = defineCollections({
   type: "doc",
   dir: "content/docs",
